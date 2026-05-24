@@ -55,7 +55,7 @@ class EstateAdmin(admin.ModelAdmin):
     def has_change_permission(self, request, obj=None):
         # ако се уште не менуваме ништо ќе помине овој if и ќе може да се види листата,
         # ако не помине тоа значи дека менуваме некој објект
-        if obj is None or obj.pk is None:
+        if obj is None:
             return Agent.objects.filter(user=request.user).exists()
         return AgentEstate.objects.filter(agent__user=request.user, estate=obj).exists()
 
