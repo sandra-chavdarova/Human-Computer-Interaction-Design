@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Estate</title>
+    <style>
+        #dark {
+            color: #545d65;
+        }
+    </style>
+</head>
+<body>
+<div class="container d-flex justify-content-between">
+    <div>
+        <img src="{% static 'logo.png' %}">
+    </div>
+    <div class="align-self-center">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link text-black" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-black" href="#">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-black" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-black" href="#">Contacts</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-dark rounded-0" href="#">Contact Us</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="container d-flex justify-content-between">
+    <h1 class="col-6 align-self-center ps-5">Architecture<br><span id="dark">Bureau</span></h1>
+    <div class="col-6">
+        <img class="p-3" src="{{ estate.photo.url }}">
+    </div>
+</div>
+
+<div class="container p-3">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-dark container rounded-0" href="{% url 'index' %}">Save</button>
+    </form>
+</div>
+
+</body>

@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trips</title>
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    <style>
+        body{
+            background: #9fcfac;
+        }
+        #banner {
+            height: 500px;
+            background-image: url("{% static 'images/BTLHeader.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            opacity: 0.75;
+        }
+    </style>
+</head>
+<body>
+<div class="container d-flex justify-content-between align-content-center my-auto">
+    <div class="my-1">
+        <h2 class="fw-bolder">Logo</h2>
+    </div>
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link active fw-bold" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link fw-bold" href="#">About Us</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link fw-bold" href="#">Help</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link fw-bold" href="#">Contact</a>
+        </li>
+    </ul>
+</div>
+
+<div id="banner" class="container-fluid d-flex justify-content-center align-items-center">
+    <h1 class="title text-center text-black">Trips all around the world</h1>
+</div>
+
+
+<div class="container justify-content-center my-4">
+    <h2 class="text-center">{{ pageTitle }}</h2>
+    <div class="row">
+        {% for trip in trips %}
+        <div class="card col-3 py-3 px-1 m-3 text-center">
+            <img class="card-img-top align-self-center rounded-3" src="{{ trip.image.url }}" alt="image" style="width: 300px;">
+            <div class="card-body align-self-center">
+                <h5 class="card-title text-center">{{trip.place}}</h5>
+                <p class="card-text text-center">Price: ${{ trip.price }}</p>
+                <a href="{% url 'details' trip.id %}" class="btn btn-primary">Details</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="d-flex justify-content-center my-5">
+    <a class="btn btn-lg btn-primary" href="{% url 'add' %}">Add a trip</a>
+</div>
+
+</body>
+</html>

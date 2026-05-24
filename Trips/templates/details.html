@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trip</title>
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    <style>
+        body{
+            background: #9fcfac;
+        }
+        p{
+            font-size: 20px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+<h1 class="text-center">{{trip.place}}</h1>
+<img src="{{ trip.image.url }}" alt="image" class="card-img-top d-flex mx-auto m-3" style="width: 400px">
+<p class="text-center">${{ trip.price }}</p>
+<p class="text-center">{{ trip.duration }} days</p>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+    <style>
+        #image {
+            background: #cfd5c5;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid d-flex justify-content-center mb-3">
+    <img src="{% static 'logo2.png' %}">
+</div>
+
+<div class="container">
+    <div class="row">
+        {% for book in books %}
+            <div class="col-4">
+                <div class="card">
+                    <div id="image">
+                        <img class="card-img-top p-5" src="{{ book.image.url }}" alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        {% for a in authors %}
+                            <p class="card-text">
+                                {% if a.book == book %}
+                                    {{ a.author.name }}
+                                {% endif %}
+                            </p>
+                        {% endfor %}
+                        <p class="card-text">{{ book.price }}$</p>
+                        <a href="{% url 'edit' book.id %}" class="btn btn-primary">Edit</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>

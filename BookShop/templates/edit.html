@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    <style>
+        #banner {
+            background: url("{% static 'bg-breadcrumb.jpg' %}");
+            background-size: cover;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid d-flex justify-content-center mb-3">
+    <img src="{% static 'logo2.png' %}">
+</div>
+<div id="banner" class="container-fluid d-flex justify-content-center">
+    <h1 class="title align-self-center">Edit</h1>
+</div>
+<div class="container p-3">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success" type="submit">Save</button>
+    </form>
+</div>
+</body>
+</html>

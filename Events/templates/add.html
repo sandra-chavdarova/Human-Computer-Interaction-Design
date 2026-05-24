@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add event</title>
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+</head>
+<body>
+<div class="container mb-3">
+    <h1>Ask for event</h1>
+    <p>Enter details for an event below</p>
+</div>
+
+<div class="container mt-3">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+</body>
+</html>
