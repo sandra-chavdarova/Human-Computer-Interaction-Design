@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Exhibition</title>
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    <style>
+        #banner {
+            background: url("{% static 'main_header_bg-copyright (1).jpg' %}");
+            background-size: cover;
+            height: 300px;
+        }
+
+        hr {
+            border: 0; /* Reset default styles */
+            border-top: 3px solid gray;
+        }
+
+        body {
+            background: #dcd2bc;
+        }
+    </style>
+</head>
+<body>
+<div id="banner" class="container-fluid">
+    <h1 class="fw-bolder text-white ps-3">ozeum</h1>
+    <hr>
+    <h1 class="title text-white d-flex align-self-center justify-content-center">Add</h1>
+</div>
+
+<div class="container p-5">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+</div>
+
+</body>
+</html>
