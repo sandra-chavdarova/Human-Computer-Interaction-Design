@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Destinations</title>
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    <style>
+        #nav {
+            background: #dcdde1;
+        }
+    </style>
+</head>
+<body>
+<div id="nav" class="container-fluid">
+    <div class="container d-flex justify-content-between">
+        <h1 class="fw-bolder align-self-center col-4">TRAVEL</h1>
+        <ul class="nav justify-content-between align-items-center col-8">
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-black" href="#">Service</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-black" href="#">Destination</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-black" href="#">Booking</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-black" href="#">Testimonial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-black" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-black btn btn-outline-success" href="#">Sign Up</a>
+            </li>
+            <li class="nav-item dropdown align-self-center">
+                <a class="nav-link dropdown-toggle text-black fw-bold" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="true"
+                   aria-expanded="false">EN</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item text-black" href="#">MKD</a>
+                    <a class="dropdown-item text-black" href="#">EN</a>
+                </div>
+        </ul>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <h6 class="text-center mt-5 fw-bold" style="color: gray; word-spacing: 3px">Top Selling</h6>
+    <h1 class="text-center fw-bolder mt-3">Top Destinations</h1>
+    <div class="row mt-5">
+        {% for d in destinations %}
+            <div class="col-4 mt-3">
+                <div class="card">
+                    <img class="card-img-top" src="{{ d.image.url }}" alt="Card image cap">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title">{{ d.place }}</h5>
+                            <p class="card-text fw-semibold">${{ d.price }}</p>
+                        </div>
+                        <p class="card-text">{{ d.duration }} Days Trip</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <a class="btn btn-primary container my-3" href="{% url 'add' %}">Add a New Destination</a>
+</div>
+</body>
+</html>

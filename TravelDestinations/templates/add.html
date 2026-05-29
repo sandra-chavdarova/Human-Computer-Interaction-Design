@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add a New Destination</title>
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    <style>
+        #nav {
+            background: #dcdde1;
+        }
+    </style>
+</head>
+<body>
+<div id="nav" class="container-fluid">
+    <div class="container d-flex justify-content-between">
+        <h1 class="fw-bolder align-self-center col-4">TRAVEL</h1>
+        <ul class="nav justify-content-between align-items-center col-8">
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-black" href="#">Service</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-black" href="#">Destination</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-black" href="#">Booking</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-black" href="#">Testimonial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-black" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-black btn btn-outline-success" href="#">Sign Up</a>
+            </li>
+            <li class="nav-item dropdown align-self-center">
+                <a class="nav-link dropdown-toggle text-black fw-bold" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="true"
+                   aria-expanded="false">EN</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item text-black" href="#">MKD</a>
+                    <a class="dropdown-item text-black" href="#">EN</a>
+                </div>
+        </ul>
+    </div>
+</div>
+<div class="container my-5">
+    <h1 class="text-center">Add a New Destination</h1>
+    <form method="post" enctype="multipart/form-data" class="mt-3">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success container">Add</button>
+    </form>
+</div>
+</body>
+</html>
