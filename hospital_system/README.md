@@ -1,5 +1,5 @@
 # Систем за управување со надворешни соработници (лекари)
-Стартер код: [starter.zip](https://github.com/user-attachments/files/28396450/starter.zip)
+Стартер код: [starter.zip](https://github.com/user-attachments/files/28396450/starter.zip) <br><br>
 Материјали: [images-B.zip](https://github.com/user-attachments/files/28396459/images-B.zip)
 
 
