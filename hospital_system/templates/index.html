@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <style>
+        .banner1 {
+            height: 100px;
+            background: #25ba70;
+        }
+
+        .banner2 {
+            height: 200px;
+            background: #25ba70;
+        }
+
+        .container.mt-5 {
+            background: #faf6f6;
+        }
+
+        h3 {
+            color: #25ba70;
+            font-weight: bold;
+        }
+
+        .status {
+            background: #25ba70;
+        }
+
+        .card-img-top {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid d-flex banner1">
+    <h2 class="text-white align-self-center">Hospital Doctors System</h2>
+</div>
+
+<div class="container mt-5 p-3">
+    <div class="banner2 mx-auto d-flex flex-column justify-content-center">
+        <h1 class="text-white text-center fw-bold">Our Trusted Doctors</h1>
+        <p class="text-white text-center">Browse our external collaborators by specialty. Learn about
+            their medical background, and view their current
+            and
+            upcoming appointments</p>
+    </div>
+
+    {% if cardiologists %}
+        <h3 class="text-center my-3">Cardiologists</h3>
+        <div class="row">
+            {% for c in cardiologists %}
+                <div class="col-4">
+                    <div class="card">
+                        <img class="card-img-top rounded-circle p-3" src="{{ c.image.url }}" alt="Card image cap">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <h5 class="card-title">Dr. {{ c.full_name }}</h5>
+                            <span class="text-white status p-1 m-1 mx-auto rounded-2">Cardiologist</span>
+                            <p class="card-text"><span class="fw-bold">Institution: </span>{{ c.institution }}</p>
+                            <p class="card-text"><span class="fw-bold">Email: </span>{{ c.email }}</p>
+                            <p class="card-text"><span class="fw-bold">Phone: </span>{{ c.phone }}</p>
+                            <a href="{% url 'doctor_detail' doctor_id=c.id %}" class="btn btn-outline-success">View
+                                Profile</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if dermatologists %}
+        <h3 class="text-center my-3">Dermatologists</h3>
+        <div class="row">
+            {% for d in dermatologists %}
+                <div class="col-4">
+                    <div class="card">
+                        <img class="card-img-top rounded-circle p-3" src="{{ d.image.url }}" alt="Card image cap">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <h5 class="card-title">Dr. {{ d.full_name }}</h5>
+                            <span class="text-white status p-1 m-1 mx-auto rounded-2">Dermatologist</span>
+                            <p class="card-text"><span class="fw-bold">Institution: </span>{{ d.institution }}</p>
+                            <p class="card-text"><span class="fw-bold">Email: </span>{{ d.email }}</p>
+                            <p class="card-text"><span class="fw-bold">Phone: </span>{{ d.phone }}</p>
+                            <a href="{% url 'doctor_detail' doctor_id=d.id %}" class="btn btn-outline-success">View
+                                Profile</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if neurologists %}
+        <h3 class="text-center my-3">Neurologists</h3>
+        <div class="row">
+            {% for n in neurologists %}
+                <div class="col-4">
+                    <div class="card">
+                        <img class="card-img-top rounded-circle p-3" src="{{ n.image.url }}" alt="Card image cap">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <h5 class="card-title">Dr. {{ n.full_name }}</h5>
+                            <span class="text-white status p-1 m-1 mx-auto rounded-2">Neurologist</span>
+                            <p class="card-text"><span class="fw-bold">Institution: </span>{{ n.institution }}</p>
+                            <p class="card-text"><span class="fw-bold">Email: </span>{{ n.email }}</p>
+                            <p class="card-text"><span class="fw-bold">Phone: </span>{{ n.phone }}</p>
+                            <a href="{% url 'doctor_detail' doctor_id=n.id %}" class="btn btn-outline-success">View
+                                Profile</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+<footer class="bg-black m-0 container-fluid d-flex">
+    <p class="text-white mx-auto align-self-center">Hospital Doctors System</p>
+</footer>
+</body>
+</html>
