@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <title>Bakery</title>
+    <style>
+        .homepage {
+            color: #d0494c;
+        }
+
+        .banner {
+            background: #d0494c;
+        }
+
+        h5 {
+            color: lightgray;
+        }
+
+        a.full {
+            background: white;
+            color: black;
+        }
+
+        a.outline {
+            background: #d0494c;
+            border: 1px solid white;
+            color: white;
+        }
+
+        .grayarea {
+            background: lightgray;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="container d-flex justify-content-between py-3">
+    <h2 class="homepage align-self-center">Cakery&Bakery</h2>
+    <ul class="nav justify-content-end align-self-center">
+        <li class="nav-item">
+            <a class="nav-link fw-bold disabled" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link fw-bold disabled" href="#">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-black fw-bold" href="{% url 'add' %}">Add</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link fw-bold disabled" href="#">Pricing</a>
+        </li>
+    </ul>
+</div>
+
+<div class="banner container-fluid">
+    <div class="container d-flex py-5">
+        <div class="col-6 align-self-center">
+            <h1 class="text-white py-2">Explore the wonderland of tastes!</h1>
+            <h5 class="py-2">Assignment for HCI Exam in September 2024</h5>
+            <div class="py-2">
+                <a class="btn full">Get Started</a>
+                <a class="btn outline">Learn More</a>
+            </div>
+        </div>
+        <div class="col-6">
+            <img src="{% static '20190429-barnimages-006-960x640.jpg' %}" class="rounded-3 card-img-top">
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid grayarea d-flex">
+    <div class="d-flex flex-column mx-auto justify-content-around" style="width: 50%">
+        <p class="text-center d-flex align-self-center my-auto">"Lorem ipsum dolor sit amet, consectetur adipisicing
+            elit.<br>Consequatur corporis doloribus facere laudantium provident repudiandae sint temporibus!<br>Assumenda
+            error et, incidunt maxime nobis obcaecati."
+        </p>
+        <div class="d-flex align-self-center my-auto mt-0">
+            <img class="align-self-center" src="{% static 'avatar.png' %}">
+            <p class="fw-bold my-auto">John Doe / CEO, Cakery&Bakery</p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2 class="homepage text-center mt-5">Products</h2>
+    <p style="color: gray" class="text-center mt-2">Add more products in the edit form!</p>
+    <div class="row">
+        {% for cake in cakes %}
+            <div class="col-4 mt-3">
+                <div class="card">
+                    <img class="card-img-top" src="{{ cake.image.url }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ cake.name }}</h5>
+                        <p class="card-text">{{ cake.description }}</p>
+                        <div class="d-flex">
+                            <img class="rounded-circle" src="{{ cake.baker.avatar.url }}">
+                            <p class="card-text fw-bold my-auto px-2">{{ cake.baker }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<footer class="container-fluid banner mt-5">
+    <div class="container d-flex justify-content-between" style="height: 50px">
+        <p class="text-white my-auto">Copyright &copy; HCI 2024</p>
+        <ul class="nav justify-content-end align-self-center">
+            <li class="nav-item">
+                <a class="nav-link text-decoration-underline text-white" href="#">Privacy</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-decoration-underline text-white" href="#">Terms</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-decoration-underline text-white" href="{% url 'add' %}">Add</a>
+            </li>
+        </ul>
+    </div>
+</footer>
+</body>
+</html>

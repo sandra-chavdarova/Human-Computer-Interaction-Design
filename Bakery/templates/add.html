@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <title>Add a Cake</title>
+    <style>
+        .homepage {
+            color: #d0494c;
+        }
+
+        .banner {
+            background: #d0494c;
+        }
+
+        h5 {
+            color: lightgray;
+        }
+
+        a.full {
+            background: white;
+            color: black;
+        }
+
+        a.outline {
+            background: #d0494c;
+            border: 1px solid white;
+            color: white;
+        }
+
+        .grayarea {
+            background: lightgray;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="container d-flex justify-content-between py-3">
+    <h2 class="homepage align-self-center">Cakery&Bakery</h2>
+    <ul class="nav justify-content-end align-self-center">
+        <li class="nav-item">
+            <a class="nav-link fw-bold disabled" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link fw-bold disabled" href="#">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-black fw-bold" href="{% url 'add' %}">Add</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link fw-bold disabled" href="#">Pricing</a>
+        </li>
+    </ul>
+</div>
+
+<div class="container p-5 rounded-5" style="background: lightgray">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success container">Add</button>
+    </form>
+</div>
+</body>
+</html>
